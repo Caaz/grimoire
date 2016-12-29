@@ -1,5 +1,7 @@
 node_modules
 tmp
+
 .DS_Store
-config.json
-main.js
+
+examples/config.json
+examples/tmp

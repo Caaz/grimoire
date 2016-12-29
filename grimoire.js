@@ -7,17 +7,13 @@ const config = {
 const commands = {}
 module.exports = {
   init(cfg) {
-    for(const key in cfg) {
-      config[key] = cfg[key]
-    }
+    Object.assign(config, cfg)
     client = new Discord.Client()
     return this
   },
   register(plugins) {
-    for(const i in plugins) {
-      if(commands[i]) console.warn('Overwriting previously defined command: ' + i)
-      commands[i] = plugins[i]
-    }
+    delete plugins._config
+    Object.assign(commands, plugins)
     return this
   },
   start(token) {
@@ -28,9 +24,7 @@ module.exports = {
         for(const key in commands) {
           try {
             if(trigger === key) commands[key](message, args, client, config)
-          } catch(err) {
-            console.warn(err)
-          }
+          } catch(err) { console.warn(err) }
         }
       }
     })

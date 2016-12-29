@@ -1,4 +1,4 @@
-const grimoire = require('../src/grimoire')
+const grimoire = require('../grimoire')
 
 grimoire.init({
   // set ! to be our prefix, so that not just any line of text will execute it.
