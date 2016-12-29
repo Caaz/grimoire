@@ -22,7 +22,7 @@ module.exports = {
   },
   start(token) {
     client.on('message', message => {
-      if(message.content.startsWith('~')) {
+      if(message.content.startsWith(config.prefix)) {
         const args = message.content.substr(1).split(' ')
         const trigger = args.shift().toLowerCase()
         for(const key in commands) {
